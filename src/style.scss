@@ -1,0 +1,45 @@
+body[data-layout-mode=horizontal] {
+    .navbar-toggle {
+        span {
+            background-color: rgb(255 255 255 / 50%);
+        }
+    }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, .1);
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgb(86 113 240 / 70%);
+	border: 1px solid rgb(50 58 70 / 20%);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(86 113 240);
+}
+
+.navbar-custom {
+    background: rgb(65, 55, 156);
+    background: linear-gradient(90deg, rgb(65, 55, 156) 0%, rgb(102, 88, 221) 47%, rgb(102, 88, 221) 100%);
+
+    .pro-user-name {
+        color: #FFF;
+    }
+}
+
+.svg-computer {
+    g {
+        .st0 {
+            fill: none;
+            stroke: rgb(102, 88, 221);
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: 10;
+        }
+    }
+}
