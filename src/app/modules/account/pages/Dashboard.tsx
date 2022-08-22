@@ -12,12 +12,10 @@ const Dashboard = (): JSX.Element => {
 		setPageTitle("Dashboard");
 	}, [ setPageTitle ]);
 
-	return (
-		<>
-			<WidgetBalance balance={ currentUser?.balance } />
-			<TransactionsList title="Movimentação do dia" />
-		</>
-	);
+	return <>
+		<WidgetBalance balance={ currentUser?.balance } />
+		<TransactionsList title="Movimentação do dia" />
+	</>;
 };
 
 export default Dashboard

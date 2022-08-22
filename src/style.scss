@@ -43,3 +43,48 @@ body[data-layout-mode=horizontal] {
         }
     }
 }
+
+.svg-cogs {
+    g {
+        .st0 {
+            fill: none;
+            stroke: rgb(102, 88, 221);
+        }
+    }
+}
+
+
+.type {
+    // background: #e8e8eb;
+    // border: 1px solid;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 15px;
+    margin-bottom: 15px;
+
+
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    transition: all .3s ease-in-out;
+    &.active,
+    &:hover, &:focus, &:active {
+        transform: translateY(-3px);
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    }
+
+    span {
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        color: #5671f0;
+        text-transform: uppercase;
+    }
+
+    i {
+        color: #0d1e35;
+        display: block;
+        font-size: 40px;
+        // margin-bottom: 10px;
+    }
+}

@@ -12,10 +12,10 @@ const Transactions = (): JSX.Element => {
 		setPageTitle("Movimentações");
 	}, [ setPageTitle ]);
 
-	return (<>
+	return <>
 		<WidgetBalance balance={ currentUser?.balance } />
 		<TransactionsList filters={ true } />
-	</>)
+	</>;
 }
 
 export default Transactions;

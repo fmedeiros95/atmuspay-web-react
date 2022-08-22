@@ -1,21 +1,20 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Col, Container, Row } from "react-bootstrap";
+
 const Footer = (): JSX.Element => (
-	<>
-		<footer className="footer">
-			<div className="container">
-				<div className="row">
-					<div className="col-md-6">
-						&copy;2022 - <b>AtmusPay</b> | Todos os direitos reservados
+	<footer className="footer">
+		<Container>
+			<Row>
+				<Col md={6}>
+					&copy;2022 - <b>AtmusPay</b> | Todos os direitos reservados
+				</Col>
+				<Col md={6}>
+					<div className="text-md-end footer-links d-none d-sm-block">
+						<a href="https://google.com" target="_blank" rel="noreferrer">Documentação</a>
 					</div>
-					<div className="col-md-6">
-						<div className="text-md-end footer-links d-none d-sm-block">
-							<a href="https://google.com" target="_blank" rel="noreferrer">Documentação</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</>
+				</Col>
+			</Row>
+		</Container>
+	</footer>
 );
 
 export default Footer;

@@ -10,6 +10,8 @@ import flagBrazil from "../../../../../images/flags/brazil.jpg";
 import useAuth from "../../../../hooks/useAuth";
 import useLayout from "../../../../hooks/useLayout";
 import { userAvatar, userFullName } from "../../../../helpers/UtilsHelper";
+import { Container } from "react-bootstrap";
+import SimpleBar from 'simplebar-react';
 
 const Navbar = (): JSX.Element => {
 	const nav = useNavigate();
@@ -25,9 +27,10 @@ const Navbar = (): JSX.Element => {
 		toggleMenu(!isMenuOpen);
 	};
 
-	return (
+	return (<>
+		{/* <Navbar></Navbar> */}
 		<div className="navbar-custom">
-			<div className="container">
+			<Container>
 				<ul className="list-unstyled topnav-menu float-end mb-0">
 					{ (currentUser?.admin.is_active && <li>
 						<Link to="/admin/dashboard" className="nav-link arrow-none text-white text-uppercase">
@@ -47,7 +50,7 @@ const Navbar = (): JSX.Element => {
 					</li>
 					<li className="dropdown notification-list topbar-dropdown">
 						<span className="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" style={{ cursor: "pointer" }} data-bs-toggle="dropdown">
-							<img src={ userAvatar(currentUser?.user) } alt="" className="rounded" />
+							<img src={ userAvatar(currentUser?.avatar) } alt="" className="rounded" />
 							<span className="pro-user-name ms-1">
 								{ userFullName(currentUser?.name || '') } <i className="mdi mdi-chevron-down"></i>
 							</span>
@@ -56,9 +59,17 @@ const Navbar = (): JSX.Element => {
 							<div className="dropdown-header noti-title">
 								<h6 className="text-overflow m-0">Bem-vindo!</h6>
 							</div>
-							<Link to="/account/user" className="dropdown-item notify-item">
+							<Link to="/account/user/profile" className="dropdown-item notify-item">
 								<i className="fas fa-user fa-fw"></i>
-								<span>Minha Conta</span>
+								<span>Meus dados</span>
+							</Link>
+							<Link to="/account/user/address" className="dropdown-item notify-item">
+								<i className="fas fa-map fa-fw"></i>
+								<span>Meu endereço</span>
+							</Link>
+							<Link to="/account/user/address" className="dropdown-item notify-item">
+								<i className="fas fa-wallet fa-fw"></i>
+								<span>Minha carteira</span>
 							</Link>
 							<Link to="/account/api" className="dropdown-item notify-item">
 								<i className="fas fa-key fa-fw"></i>
@@ -113,9 +124,9 @@ const Navbar = (): JSX.Element => {
 						</span>
 					</li>
 				</ul>
-			</div>
+			</Container>
 		</div>
-	);
+	</>);
 }
 
 export default Navbar;

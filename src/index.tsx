@@ -4,6 +4,8 @@ import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
+// import * as dotenv from "dotenv";
+
 import './scss/app.scss';
 import './scss/icons.scss';
 import './style.scss';
@@ -24,7 +26,7 @@ root.render(
 			<AuthProvider>
 				<AppRoutes />
 			</AuthProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
+			{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 		</QueryClientProvider>
 	// </React.StrictMode>
 );

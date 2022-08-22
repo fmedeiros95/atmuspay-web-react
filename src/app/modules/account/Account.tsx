@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Container } from "react-bootstrap";
 import { Outlet, useLocation } from "react-router-dom";
 import useLayout from "../../hooks/useLayout";
 
@@ -11,9 +12,19 @@ const Account = (): JSX.Element => {
 	const location = useLocation();
 	const { pageTitle } = useLayout();
 
+	const data = [{
+		title: "Account"
+	}];
+
+	// find and remove account from array
+	const index = data.findIndex(item => item.title === pageTitle);
+	if (index > -1) {
+		data.splice(index, 1);
+	}
+
+
 	useEffect(() => {
 		document.body.className = "";
-		console.log(location);
 	}, [ location ]);
 
 	return (
@@ -23,10 +34,10 @@ const Account = (): JSX.Element => {
 
 			<div className="content-page">
 				<div className="content">
-					<div className="container">
+					<Container>
 						<PageTitleBox title={ pageTitle } />
 						<Outlet />
-					</div>
+					</Container>
 				</div>
 
 				<Footer />

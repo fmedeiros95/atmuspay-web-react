@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import logoDark from "../../../images/logo-light.png";
 import logoLight from "../../../images/logo-light-2.png";
+import { Card } from "react-bootstrap";
 
 const Auth = () => {
 	useEffect(() => {
@@ -14,7 +15,7 @@ const Auth = () => {
 				{/* Auth fluid left content */}
 				<div className="auth-fluid-form-box">
 					<div className="align-items-center d-flex h-100">
-						<div className="card-body">
+						<Card.Body>
 							{/* Logo */}
 							<div className="auth-brand text-center text-lg-start">
 								<div className="auth-logo">
@@ -33,7 +34,7 @@ const Auth = () => {
 							</div>
 
 							<Outlet />
-						</div>{/* end card-body */}
+						</Card.Body>{/* end card-body */}
 					</div>{/* end .align-items-center.d-flex.h-100 */}
 				</div>{/* end auth-fluid-form-box */}
 

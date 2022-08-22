@@ -1,19 +1,14 @@
-import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import useLayout from "../../../hooks/useLayout";
 import authService from "../../../services/AuthService";
 import PageTitle from "../components/PageTitle";
-import toast from 'react-hot-toast';
-import clsx from 'clsx';
-
-const forgotPasswordSchema = Yup.object().shape({
-	email: Yup.string()
-		.email('Informe um e-mail válido')
-		.required('Informe seu e-mail')
-});
+import forgotPasswordSchema from '../validators/forgotPasswordSchema';
+import { Button, Form } from 'react-bootstrap';
 
 const ForgotPassword = (): JSX.Element => {
+	const navigate: NavigateFunction = useNavigate();
 	const { toggleLoading } = useLayout();
 
 	const formForgotPassword = useFormik({
@@ -27,56 +22,56 @@ const ForgotPassword = (): JSX.Element => {
 			try {
 				const { data } = await authService.forgotPassword(values.email);
 
-				toast.success(data.message.message);
-			} catch (err: any) {
-				console.log(err);
+				Swal.fire({
+					title: data.message.title,
+					text: data.message.message,
+					icon: 'success',
+					confirmButtonText: 'Ok',
+					allowOutsideClick: false
+				}).then(() => {
+					formForgotPassword.resetForm();
+
+					navigate('/auth/login');
+				});
 			} finally {
 				toggleLoading(false);
 			}
 		}
 	});
-	return (
-		<>
-			<PageTitle
-				title="Esqueceu a senha?"
-				subtitle="Informe seu e-mail e nós lhe enviaremos um e-mail com instruções para redefinir sua senha."
-			/>
+	return <>
+		<PageTitle
+			title="Esqueceu a senha?"
+			subtitle="Informe seu e-mail e nós lhe enviaremos um e-mail com instruções para redefinir sua senha."
+		/>
 
-			{/* Form */}
-			<form className="form-horizontal" onSubmit={formForgotPassword.handleSubmit} noValidate>
-				<div className="mb-3">
-					<label htmlFor="emailaddress" className="form-label">E-mail</label>
-					<input
-						placeholder='Digite seu e-mail'
-						{...formForgotPassword.getFieldProps('email')}
-						className={clsx(
-							'form-control',
-							{'is-invalid': formForgotPassword.touched.email && formForgotPassword.errors.email},
-							{'is-valid': formForgotPassword.touched.email && !formForgotPassword.errors.email}
-						)}
-						type='text'
-						id="email"
-						name='email'
-						autoComplete='off'
-					/>
-					{formForgotPassword.touched.email && formForgotPassword.errors.email && (
-						<div className="invalid-feedback">{ formForgotPassword.errors.email }</div>
-					)}
-				</div>
+		<Form onSubmit={formForgotPassword.handleSubmit}>
+			<Form.Group className="mb-3">
+				<Form.Label htmlFor="email">E-mail:</Form.Label>
+				<Form.Control
+					placeholder="seu.email@exemplo.com.br"
+					{...formForgotPassword.getFieldProps('email')}
+					isInvalid={formForgotPassword.touched.email && !!formForgotPassword.errors.email}
+					isValid={formForgotPassword.touched.email && !formForgotPassword.errors.email}
+					type="text"
+					id="email"
+					name="email"
+				/>
+				{formForgotPassword.touched.email && formForgotPassword.errors.email && (
+					<Form.Control.Feedback type="invalid">{formForgotPassword.errors.email}</Form.Control.Feedback>
+				)}
+			</Form.Group>
 
-				<div className="text-center d-grid">
-					<button className="btn btn-primary" type="submit">Redefinir senha</button>
-				</div>
-			</form>
+			<div className="text-center d-grid">
+				<Button variant="primary" type="submit">Redefinir senha</Button>
+			</div>
+		</Form>
 
-			{/* Footer */}
-			<footer className="footer footer-alt">
-				<p className="text-muted">
-					Lembrou sua senha? <Link to="/auth/login" className="text-muted"><b>Acesse sua conta</b></Link>
-				</p>
-			</footer>
-		</>
-	)
+		<footer className="footer footer-alt">
+			<p className="text-muted">
+				Lembrou sua senha? <Link to="/auth/login" className="text-muted ms-1"><b>Acesse sua conta</b></Link>
+			</p>
+		</footer>
+	</>;
 };
 
 export default ForgotPassword;

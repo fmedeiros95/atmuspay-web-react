@@ -16,7 +16,7 @@ const AccountRoutes = (): JSX.Element => (
 	<Routes>
 		<Route element={<Account />}>
 			<Route path="/" element={<Navigate to="dashboard" />} />
-			<Route path='dashboard' element={<Dashboard />} />
+			<Route path="dashboard" element={<Dashboard />} />
 			<Route path="deposit">
 				<Route path="pix" element={<DepositPix />} />
 				<Route path="boleto" element={<DepositBoleto />} />
@@ -25,15 +25,15 @@ const AccountRoutes = (): JSX.Element => (
 				<Route path="account" element={<TransferAccount />} />
 				<Route path="bank" element={<TransferBank />} />
 			</Route>
-			<Route path='transactions' element={<Transactions />} />
+			<Route path="transactions" element={<Transactions />} />
 			<Route path="services">
 				<Route path="recharge-mobile" element={<RechargeMobile />} />
 				<Route path="recharge-others" element={<RechargeOthers />} />
 			</Route>
-			<Route path='cards' element={<Cards />} />
+			<Route path="cards" element={<Cards />} />
 			<Route path="user" element={<ComingSoon />} />
 			<Route path="api" element={<ComingSoon />} />
-			<Route path='*' element={<PageNotFound />} />
+			<Route path="*" element={<PageNotFound />} />
 		</Route>
 	</Routes>
 );

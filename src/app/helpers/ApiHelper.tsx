@@ -1,21 +1,21 @@
-import axios from "axios";
+import axios, { AxiosRequestHeaders } from "axios";
 import { setupAxios } from "./AuthHelper";
 
 // Axios Interceptor
 setupAxios(axios);
 
 class ApiHelper {
-	get(endpoint: string): Promise<any> {
-		return axios.get(endpoint);
+	get(endpoint: string, headers?: AxiosRequestHeaders): Promise<any> {
+		return axios.get(endpoint, { headers });
 	}
-	post(endpoint: string, body: any): Promise<any> {
-		return axios.post(endpoint, body);
+	post(endpoint: string, body: any, headers?: AxiosRequestHeaders): Promise<any> {
+		return axios.post(endpoint, body, { headers });
 	}
-	put(endpoint: string, body: any): Promise<any> {
-		return axios.put(endpoint, body);
+	put(endpoint: string, body: any, headers?: AxiosRequestHeaders): Promise<any> {
+		return axios.put(endpoint, body, { headers });
 	}
-	delete(endpoint: string): Promise<any> {
-		return axios.delete(endpoint);
+	delete(endpoint: string, headers?: AxiosRequestHeaders): Promise<any> {
+		return axios.delete(endpoint, { headers });
 	}
 }
 

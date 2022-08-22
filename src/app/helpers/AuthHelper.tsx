@@ -23,7 +23,7 @@ const removeToken = () => {
 }
 
 const setupAxios = (axios: Axios) => {
-	axios.defaults.baseURL = 'http://localhost:3001/v1';
+	axios.defaults.baseURL = process.env.REACT_APP_API_URL || '';
 
 	// Request interceptor
 	axios.interceptors.request.use(
@@ -39,12 +39,10 @@ const setupAxios = (axios: Axios) => {
 	axios.interceptors.response.use(
 		(res: any) => res,
 		(err: any) => {
-			if (err.response.status === 401) {
-				removeToken();
-			}
+			if (err.response.status === 401) removeToken();
 
 			toast.remove();
-			toast.error(err.response.data.message.message || 'Something went wrong');
+			toast.error(err.response.data?.message?.message || err.message || 'Something went wrong');
 			return Promise.reject(err);
 		}
 	);

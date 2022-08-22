@@ -2,11 +2,11 @@ import apiHelper from "../helpers/ApiHelper";
 
 class AuthService {
 	login(
-		username: string,
+		document: string,
 		password: string
 	): Promise<any> {
 		return apiHelper.post('/auth/login', {
-			username,
+			document,
 			password
 		});
 	}
@@ -24,7 +24,9 @@ class AuthService {
 		password: string,
 		passwordConfirm: string
 	) {
-		return apiHelper.post('/auth/reset-password', { token, password, passwordConfirm });
+		return apiHelper.post('/auth/reset-password', { password, passwordConfirm }, {
+			'Authorization': token
+		});
 	}
 }
 export default new AuthService();

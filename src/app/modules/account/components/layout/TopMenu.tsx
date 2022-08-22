@@ -16,7 +16,7 @@ const TopMenu = (): JSX.Element => {
 								{ "show": isMenuOpen }
 							)}
 						>
-							<ul className="navbar-nav">
+							<ul className="navbar-nav d-nones">
 								<li className="nav-item">
                                     <Link to="/account/dashboard" className="nav-link">
                                         <i className="fe-airplay me-1"></i>
@@ -59,7 +59,7 @@ const TopMenu = (): JSX.Element => {
 										Movimentações
                                     </Link>
                                 </li>
-								{/* <li className="nav-item dropdown">
+								<li className="nav-item dropdown">
                                     <span className="nav-link dropdown-toggle arrow-none" id="topnav-dashboard" role="button" data-bs-toggle="dropdown">
                                         <i className="fe-dollar-sign me-1"></i>
 										Serviços
@@ -79,7 +79,7 @@ const TopMenu = (): JSX.Element => {
                                         <i className="mdi mdi-cards me-1"></i>
 										Cartões
                                     </Link>
-                                </li> */}
+                                </li>
 							</ul>
 						</div>
 					</nav>

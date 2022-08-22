@@ -1,9 +1,10 @@
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const PageNotFound = (): JSX.Element => (
 	<>
-		<div className="row justify-content-center">
-			<div className="col-12">
+		<Row className="justify-content-center">
+			<Col xs={12}>
 				<div className="error-text-box">
 					<svg viewBox="0 0 600 200">
 						{/* Symbol */}
@@ -26,16 +27,14 @@ const PageNotFound = (): JSX.Element => (
 
 					<Link to="/" className="btn btn-success waves-effect waves-light">Back to Home</Link>
 				</div>
-				{/* end row */}
 
-			</div>{/* end col */}
-		</div>
-		{/* end row */}
+			</Col>
+		</Row>
 
 		{/* Footer */}
 		<footer className="footer footer-alt">
 			<p className="text-muted">
-				&copy;2022 - UBold theme by <Link to="/" className="text-muted">Coderthemes</Link>
+				&copy;2022 - <b>AtmusPay</b> | Todos os direitos reservados.
 			</p>
 		</footer>
 	</>
